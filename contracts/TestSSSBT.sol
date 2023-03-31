@@ -121,14 +121,6 @@ contract TestSSSBT is MasaSBTSelfSovereign, ReentrancyGuard {
 
     /* ========== VIEWS ===================================================== */
 
-    function tokenURI(
-        uint256 tokenId
-    ) public view virtual override returns (string memory) {
-        _requireMinted(tokenId);
-
-        return _baseURI();
-    }
-
     /* ========== PRIVATE FUNCTIONS ========================================= */
 
     function _hash(
