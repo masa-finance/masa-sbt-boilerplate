@@ -8,10 +8,6 @@ import "@masa-finance/masa-contracts-identity/contracts/tokens/MasaSBTAuthority.
 /// @notice Test Soulbound token
 /// @dev Inherits from the ASBT contract.
 contract TestASBT is MasaSBTAuthority {
-    /* ========== STATE VARIABLES =========================================== */
-
-    /* ========== INITIALIZE ================================================ */
-
     /// @notice Creates a new Test ASBT
     /// @dev Creates a new Test ASBT, inheriting from the Masa ASBT contract.
     /// @param admin Administrator of the smart contract
@@ -25,10 +21,6 @@ contract TestASBT is MasaSBTAuthority {
         string memory baseTokenURI
     ) MasaSBTAuthority(admin, name, symbol, baseTokenURI) {}
 
-    /* ========== RESTRICTED FUNCTIONS ====================================== */
-
-    /* ========== MUTATIVE FUNCTIONS ======================================== */
-
     /// @notice Mints a new SBT
     /// @dev The caller must have the MINTER role
     /// @param to Address of the owner of the new identity
@@ -40,14 +32,6 @@ contract TestASBT is MasaSBTAuthority {
 
         return tokenId;
     }
-
-    /* ========== VIEWS ===================================================== */
-
-    /* ========== PRIVATE FUNCTIONS ========================================= */
-
-    /* ========== MODIFIERS ================================================= */
-
-    /* ========== EVENTS ==================================================== */
 
     event Minted(uint256 tokenId, address to);
 }

@@ -9,10 +9,6 @@ import "@masa-finance/masa-contracts-identity/contracts/tokens/MasaSBTSelfSovere
 /// @notice Test Soulbound token
 /// @dev Inherits from the SSSBT contract.
 contract TestSSSBT is MasaSBTSelfSovereign, ReentrancyGuard {
-    /* ========== STATE VARIABLES =========================================== */
-
-    /* ========== INITIALIZE ================================================ */
-
     /// @notice Creates a new Test SSSBT
     /// @dev Creates a new Test SSSBT, inheriting from the Masa SSSBT contract.
     /// @param admin Administrator of the smart contract
@@ -39,10 +35,6 @@ contract TestSSSBT is MasaSBTSelfSovereign, ReentrancyGuard {
         )
         EIP712("TestSSSBT", "1.0.0")
     {}
-
-    /* ========== RESTRICTED FUNCTIONS ====================================== */
-
-    /* ========== MUTATIVE FUNCTIONS ======================================== */
 
     /// @notice Mints a new SBT
     /// @dev The caller must have the MINTER role
@@ -119,10 +111,6 @@ contract TestSSSBT is MasaSBTSelfSovereign, ReentrancyGuard {
         return tokenId;
     }
 
-    /* ========== VIEWS ===================================================== */
-
-    /* ========== PRIVATE FUNCTIONS ========================================= */
-
     function _hash(
         uint256 identityId,
         address authorityAddress,
@@ -162,10 +150,6 @@ contract TestSSSBT is MasaSBTSelfSovereign, ReentrancyGuard {
                 )
             );
     }
-
-    /* ========== MODIFIERS ================================================= */
-
-    /* ========== EVENTS ==================================================== */
 
     event MintedToIdentity(
         uint256 tokenId,
