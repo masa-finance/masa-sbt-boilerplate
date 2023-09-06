@@ -18,15 +18,17 @@ contract TestASBT is MasaSBTAuthority {
         address admin,
         string memory name,
         string memory symbol,
-        string memory baseTokenURI
-    ) MasaSBTAuthority(admin, name, symbol, baseTokenURI) {}
+        string memory baseTokenURI,
+        address soulboundIdentity,
+        PaymentParams memory paymentParams
+    ) MasaSBTAuthority(admin, name, symbol, baseTokenURI, soulboundIdentity, paymentParams) {}
 
     /// @notice Mints a new SBT
     /// @dev The caller must have the MINTER role
     /// @param to Address of the owner of the new identity
     /// @return The NFT ID of the newly minted SBT
-    function mint(address to) public returns (uint256) {
-        uint256 tokenId = _mintWithCounter(to);
+    function mint(address paymentMethod, address to) public returns (uint256) {
+        uint256 tokenId = _mintWithCounter(paymentMethod, to);
 
         emit Minted(tokenId, to);
 

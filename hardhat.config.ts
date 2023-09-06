@@ -42,7 +42,7 @@ export default {
   networks,
 
   solidity: {
-    version: "0.8.7",
+    version: "0.8.8",
     settings: {
       optimizer: {
         enabled: true,
@@ -66,6 +66,7 @@ export default {
     coinmarketcap: getCoinMarketCapApiKey()
   },
   typechain: {
-    outDir: "typechain"
+    outDir: "typechain",
+    target: "ethers-v5"
   }
 };
