@@ -25,7 +25,19 @@ const func: DeployFunction = async ({
     env.ADMIN || admin.address,
     env.ASBT_NAME,
     env.ASBT_SYMBOL,
-    baseUri
+    baseUri,
+    ethers.constants.AddressZero,
+    [
+      env.SWAP_ROUTER,
+      env.WETH_TOKEN,
+      env.USDC_TOKEN,
+      env.MASA_TOKEN,
+      env.PROJECTFEE_RECEIVER || admin.address,
+      env.PROTOCOLFEE_RECEIVER || ethers.constants.AddressZero,
+      env.PROTOCOLFEE_AMOUNT || 0,
+      env.PROTOCOLFEE_PERCENT || 0,
+      env.PROTOCOLFEE_PERCENT_SUB || 0
+    ]
   ];
 
   const testASBTDeploymentResult = await deploy("TestASBT", {
