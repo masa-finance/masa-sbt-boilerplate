@@ -41,13 +41,20 @@ describe("Test ASBT", () => {
 
   describe("mint", () => {
     it("should fail to mint from non minter address", async () => {
-      await expect(testASBT.connect(address1).mint(address1.address)).to.be
-        .reverted;
+      await expect(
+        testASBT
+          .connect(address1)
+          .mint(ethers.constants.AddressZero, address1.address)
+      ).to.be.reverted;
     });
 
     it("should mint twice", async () => {
-      await testASBT.connect(owner).mint(address1.address);
-      await testASBT.connect(owner).mint(address1.address);
+      await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
+      await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
 
       expect(await testASBT.totalSupply()).to.equal(2);
       expect(await testASBT.tokenByIndex(0)).to.equal(0);
@@ -55,7 +62,9 @@ describe("Test ASBT", () => {
     });
 
     it("should mint from minter address", async () => {
-      const mintTx = await testASBT.connect(owner).mint(address1.address);
+      const mintTx = await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
       const mintReceipt = await mintTx.wait();
 
       const toAddress = mintReceipt.events![1].args![1];
@@ -67,12 +76,16 @@ describe("Test ASBT", () => {
   describe("burn", () => {
     it("should burn", async () => {
       // we mint
-      let mintTx = await testASBT.connect(owner).mint(address1.address);
+      let mintTx = await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
       let mintReceipt = await mintTx.wait();
       const tokenId1 = mintReceipt.events![0].args![1].toNumber();
 
       // we mint again
-      mintTx = await testASBT.connect(owner).mint(address1.address);
+      mintTx = await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
       mintReceipt = await mintTx.wait();
       const tokenId2 = mintReceipt.events![0].args![1].toNumber();
 
@@ -96,7 +109,9 @@ describe("Test ASBT", () => {
 
   describe("tokenUri", () => {
     it("should get a valid token URI from its tokenId", async () => {
-      const mintTx = await testASBT.connect(owner).mint(address1.address);
+      const mintTx = await testASBT
+        .connect(owner)
+        .mint(ethers.constants.AddressZero, address1.address);
 
       const mintReceipt = await mintTx.wait();
       const tokenId = mintReceipt.events![0].args![1].toNumber();
