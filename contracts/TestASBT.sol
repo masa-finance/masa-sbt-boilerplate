@@ -21,7 +21,16 @@ contract TestASBT is MasaSBTAuthority {
         string memory baseTokenURI,
         address soulboundIdentity,
         PaymentParams memory paymentParams
-    ) MasaSBTAuthority(admin, name, symbol, baseTokenURI, soulboundIdentity, paymentParams) {}
+    )
+        MasaSBTAuthority(
+            admin,
+            name,
+            symbol,
+            baseTokenURI,
+            soulboundIdentity,
+            paymentParams
+        )
+    {}
 
     /// @notice Mints a new SBT
     /// @dev The caller must have the MINTER role
