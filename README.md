@@ -12,6 +12,27 @@ A template for creating new SBTs inheriting from the Masa SBT smart contracts
 * Set `ETHERSCAN_API_KEY` to the Etherscan API key in `.env`, if needed
 * Set the environment variables in every `.env.{network}` file. These variables are used to deploy the smart contracts to the network.
 
+### Install dependencies
+
+Run:
+```
+yarn install
+```
+
+### Build smart contracts
+
+Run:
+```
+yarn build
+```
+
+### Test smart contracts
+
+Run:
+```
+yarn test
+```
+
 ### Deploy
 
 Run: `yarn deploy --network {network}` to deploy.
